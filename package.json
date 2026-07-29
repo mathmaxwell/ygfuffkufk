@@ -6,8 +6,10 @@
   "description": "Мобильное приложение резиденции «Дом Кино»",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/rename-output.js",
-    "preview": "vite preview"
+    "build": "vite build",
+    "build:single": "BUILD_SINGLE=1 vite build && node scripts/rename-output.js",
+    "preview": "vite preview",
+    "deploy": "npm run build && rsync -avz --delete dist/ root@194.163.144.40:/var/www/dom-kino/"
   },
   "dependencies": {
     "react": "^18.3.1",
