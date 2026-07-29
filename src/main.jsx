@@ -24,3 +24,13 @@ createRoot(document.getElementById('root')).render(
     />
   </StrictMode>
 );
+
+// Отметка для сторожа загрузки из index.html: скрипт доехал и запустился,
+// перезагружать страницу не нужно. Счётчик попыток заодно обнуляем, чтобы
+// следующий обрыв снова получил свои две.
+window.__dkReady = true;
+try {
+  sessionStorage.removeItem('dk-retry');
+} catch (e) {
+  /* приватный режим */
+}
